@@ -1,4 +1,4 @@
-
+ï»¿
 #include<iostream>
 
 using namespace std;
@@ -37,7 +37,7 @@ int main()
 	{
 		do
 		{
-			cout << "Ââåäèòå íîìåð çàäà÷è îò 1 äî 5:" << endl;
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð·Ð°Ð´Ð°Ñ‡Ð¸ Ð¾Ñ‚ 1 Ð´Ð¾ 5:" << endl;
 			cin >> taskNumber;
 		} while (taskNumber > 5 || taskNumber < 1);
 
