@@ -1,39 +1,11 @@
 ﻿
 #include<iostream>
-#include<cmath>
+#include<fstream>
+
+#include"Task1.h"
+#include"Task2.h"
 
 using namespace std;
-
-unsigned short GetUserInput()
-{
-	while (true)
-	{
-		int input;
-		cin >> input;
-		if (cin.fail() || input <= 0)
-		{
-			cout << "Ошибка ввода, повторите ввод: ";
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		}
-		else
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			return (unsigned short)input;
-		}
-	}
-}
-
-void PrintArr(size_t size, bool NeedCnt, unsigned int* Arr)
-{
-	if (NeedCnt) cout << "Кол-во элементов = " << size << endl;
-	for (size_t i = 0; i < size; i++)
-	{
-		cout << Arr[i] << ' ';
-	}
-	cout << endl;
-}
 
 void Task1()
 {
@@ -52,7 +24,7 @@ void Task1()
 	{
 		for (size_t i = 0; i < n; i++)
 		{
-			ptrArr[i] = pow(2, i);
+			ptrArr[i] = (int)pow(2, i);
 		}
 		PrintArr(n, false, ptrArr);
 		delete[] ptrArr;
@@ -61,76 +33,6 @@ void Task1()
 	{
 		cerr << "Ошибка выделения памяти!";
 	}
-}
-
-typedef struct matrix
-{
-private:
-	unsigned short n = 0;
-public:
-	unsigned int** ptrMatrix;
-	matrix(unsigned short n_p)
-	{
-		n = n_p;
-		ptrMatrix = new(nothrow) unsigned int* [n];
-
-		if (ptrMatrix)
-		{
-			for (size_t i = 0; i < n; i++)
-			{
-				ptrMatrix[i] = new(nothrow) unsigned int[n];
-				if (!ptrMatrix[i])
-				{
-					cerr << "Ошибка выделения памяти под указатель на строку матрицы!";
-					return;
-				}
-			}
-		}
-		else
-		{
-			cerr << "Ошибка выделения памяти под указатель на матрицу!";
-			return;
-		}
-		cout << "Матрица создана" << endl << endl;
-	}
-	~matrix()
-	{
-		for (size_t i = 0; i < n; i++)
-		{
-			delete[] ptrMatrix[i];
-		}
-		delete[] ptrMatrix;
-		cout << "Матрица удалена" << endl;
-	}
-	unsigned short getSize()
-	{
-		return n;
-	}
-} Matrix;
-
-void fillMatrix(unsigned int** matrix, size_t size)
-{
-	for (size_t i = 0; i < size; i++)
-	{
-		for (size_t j = 0; j < size; j++)
-		{
-			matrix[i][j] = rand() % 1000;
-		}
-	}
-}
-
-void printMatrix(unsigned int** matrix, size_t size)
-{
-	for (size_t i = 0; i < size; i++)
-	{
-		for (size_t j = 0; j < size; j++)
-		{
-			cout.width(4);
-			cout << matrix[i][j];
-		}
-		cout << endl;
-	}
-	cout << endl;
 }
 
 void Task2()
