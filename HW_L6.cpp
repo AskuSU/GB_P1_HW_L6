@@ -46,7 +46,7 @@ void Task1()
 		n = GetUserInput();			
 	} while (n > 32);
 	
-	unsigned int* ptrArr = new (nothrow) unsigned int[n];
+	unsigned int* ptrArr = new(nothrow) unsigned int[n];
 	
 	if (ptrArr)
 	{
@@ -59,13 +59,89 @@ void Task1()
 	}
 	else
 	{
-		cout << "Ошибка выделения памяти!";
+		cerr << "Ошибка выделения памяти!";
 	}
+}
+
+typedef struct matrix
+{
+private:
+	unsigned short n = 0;
+public:
+	unsigned int** ptrMatrix;
+	matrix(unsigned short n_p)
+	{
+		n = n_p;
+		ptrMatrix = new(nothrow) unsigned int* [n];
+
+		if (ptrMatrix)
+		{
+			for (size_t i = 0; i < n; i++)
+			{
+				ptrMatrix[i] = new(nothrow) unsigned int[n];
+				if (!ptrMatrix[i])
+				{
+					cerr << "Ошибка выделения памяти под указатель на строку матрицы!";
+					return;
+				}
+			}
+		}
+		else
+		{
+			cerr << "Ошибка выделения памяти под указатель на матрицу!";
+			return;
+		}
+		cout << "Матрица создана" << endl << endl;
+	}
+	~matrix()
+	{
+		for (size_t i = 0; i < n; i++)
+		{
+			delete[] ptrMatrix[i];
+		}
+		delete[] ptrMatrix;
+		cout << "Матрица удалена" << endl;
+	}
+	unsigned short getSize()
+	{
+		return n;
+	}
+} Matrix;
+
+void fillMatrix(unsigned int** matrix, size_t size)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		for (size_t j = 0; j < size; j++)
+		{
+			matrix[i][j] = rand() % 1000;
+		}
+	}
+}
+
+void printMatrix(unsigned int** matrix, size_t size)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		for (size_t j = 0; j < size; j++)
+		{
+			cout.width(4);
+			cout << matrix[i][j];
+		}
+		cout << endl;
+	}
+	cout << endl;
 }
 
 void Task2()
 {
-
+	cout << "Матрица 4x4 заполненная рандомно:" << endl << endl;
+	unsigned short n = 4;
+	Matrix* myMatrix = new Matrix(n);
+	unsigned int** ptrMatrix = myMatrix->ptrMatrix;
+	fillMatrix(ptrMatrix, myMatrix->getSize());
+	printMatrix(ptrMatrix, myMatrix->getSize());
+	delete myMatrix;
 }
 
 void Task3()
