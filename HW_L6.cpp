@@ -1,9 +1,9 @@
 ﻿
 #include<iostream>
-#include<fstream>
 
 #include"Task1.h"
 #include"Task2.h"
+#include"Task3.h"
 
 using namespace std;
 
@@ -48,7 +48,15 @@ void Task2()
 
 void Task3()
 {
-
+	cout << "Генерация 2х файлов:" << endl << endl;
+	cout << "Введите имя 1го файла(без расширения): ";
+	string nameF1;
+	cin >> nameF1;
+	cout << "Введите имя 2го файла(без расширения): ";
+	string nameF2;
+	cin >> nameF2;
+	generateFile(nameF1, 100);
+	generateFile(nameF2, 80);
 }
 
 void Task4()
