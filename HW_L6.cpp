@@ -4,6 +4,7 @@
 #include"Task1.h"
 #include"Task2.h"
 #include"Task3.h"
+#include"Task4.h"
 
 using namespace std;
 
@@ -61,7 +62,17 @@ void Task3()
 
 void Task4()
 {
-
+	cout << "Соединение 2х файлов:" << endl << endl;
+	cout << "Введите имя 1го файла(без расширения): ";
+	string nameF1;
+	cin >> nameF1;
+	cout << "Введите имя 2го файла(без расширения): ";
+	string nameF2;
+	cin >> nameF2;
+	cout << "Введите имя Конечного файла(без расширения): ";
+	string nameSumF;
+	cin >> nameSumF;
+	connectTwoFiles(nameF1, nameF2, nameSumF);
 }
 
 void Task5()
@@ -72,6 +83,7 @@ void Task5()
 int main()
 {
 	setlocale(LC_ALL, "RU");
+	srand(time(0));
 
 	unsigned short taskNumber = 0;
 	while (true)

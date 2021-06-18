@@ -5,4 +5,4 @@
 #include<cmath>
 #include<string>
 
-void generateFile(std::string nameFile, size_t ñharacters);
+void generateFile(std::string nameFile, unsigned short ñharacters);
