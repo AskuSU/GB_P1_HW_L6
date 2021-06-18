@@ -32,3 +32,22 @@ void PrintArr(size_t size, bool NeedCnt, unsigned int* Arr)
 	}
 	cout << endl;
 }
+
+void outputPowArray(unsigned short n)
+{
+	unsigned int* ptrArr = new(nothrow) unsigned int[n];
+
+	if (ptrArr)
+	{
+		for (size_t i = 0; i < n; i++)
+		{
+			ptrArr[i] = (int)pow(2, i);
+		}
+		PrintArr(n, false, ptrArr);
+		delete[] ptrArr;
+	}
+	else
+	{
+		cerr << "Ошибка выделения памяти!";
+	}
+}

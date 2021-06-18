@@ -20,21 +20,7 @@ void Task1()
 		n = GetUserInput();			
 	} while (n > 32);
 	
-	unsigned int* ptrArr = new(nothrow) unsigned int[n];
-	
-	if (ptrArr)
-	{
-		for (size_t i = 0; i < n; i++)
-		{
-			ptrArr[i] = (int)pow(2, i);
-		}
-		PrintArr(n, false, ptrArr);
-		delete[] ptrArr;
-	}
-	else
-	{
-		cerr << "Ошибка выделения памяти!";
-	}
+	outputPowArray(n);
 }
 
 void Task2()
@@ -51,12 +37,9 @@ void Task2()
 void Task3()
 {
 	cout << "Генерация 2х файлов:" << endl << endl;
-	cout << "Введите имя 1го файла(без расширения): ";
-	string nameF1;
-	cin >> nameF1;
-	cout << "Введите имя 2го файла(без расширения): ";
-	string nameF2;
-	cin >> nameF2;
+	string nameF1, nameF2;
+	nameF1 = getNameFileFromUser(1);
+	nameF2 = getNameFileFromUser(2);
 	generateFile(nameF1, 100);
 	generateFile(nameF2, 80);
 }
@@ -64,24 +47,17 @@ void Task3()
 void Task4()
 {
 	cout << "Соединение 2х файлов:" << endl << endl;
-	cout << "Введите имя 1го файла(без расширения): ";
-	string nameF1;
-	cin >> nameF1;
-	cout << "Введите имя 2го файла(без расширения): ";
-	string nameF2;
-	cin >> nameF2;
-	cout << "Введите имя Конечного файла(без расширения): ";
-	string nameSumF;
-	cin >> nameSumF;
+	string nameF1, nameF2, nameSumF;
+	nameF1 = getNameFileFromUser(1);
+	nameF2 = getNameFileFromUser(2);
+	nameSumF = getNameFileFromUser(100);
 	connectTwoFiles(nameF1, nameF2, nameSumF);
 }
 
 void Task5()
 {
 	cout << "Поиск подстроки в файле:" << endl << endl;
-	cout << "Введите имя файла(без расширения): ";
-	string nameF;
-	cin >> nameF;
+	string nameF = getNameFileFromUser(0);
 	cout << "Введите искомую подстроку: ";
 	string subString;
 	cin >> subString;

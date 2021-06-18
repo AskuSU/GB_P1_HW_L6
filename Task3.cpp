@@ -1,6 +1,27 @@
 #include"Task3.h"
 using namespace std;
 
+string getNameFileFromUser(unsigned short indexF)
+{
+	cout << "Введите имя";
+	switch (indexF)
+	{
+	case 0:
+		break;
+	case 100:
+		cout << " Конечного";
+		break;
+	default:
+		cout << " " << indexF << "го";
+		break;
+	}
+	cout << " файла(без расширения): ";
+	string s;
+	cin >> s;
+
+	return s;
+}
+
 void generateFile(string nameFile, unsigned short сharacters)
 {
 	ofstream fout(nameFile + ".txt");
