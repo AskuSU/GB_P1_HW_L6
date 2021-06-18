@@ -5,6 +5,7 @@
 #include"Task2.h"
 #include"Task3.h"
 #include"Task4.h"
+#include"Task5.h"
 
 using namespace std;
 
@@ -77,7 +78,15 @@ void Task4()
 
 void Task5()
 {
-
+	cout << "Поиск подстроки в файле:" << endl << endl;
+	cout << "Введите имя файла(без расширения): ";
+	string nameF;
+	cin >> nameF;
+	cout << "Введите искомую подстроку: ";
+	string subString;
+	cin >> subString;
+	if (findSubstringInFile(subString, nameF)) cout << "Подстрока найдена" << endl;
+	else cout << "Подстрока НЕ найдена!" << endl;
 }
 
 int main()

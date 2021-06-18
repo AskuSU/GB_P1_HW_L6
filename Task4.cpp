@@ -30,11 +30,11 @@ void connectTwoFiles(string name1F, string name2F, string nameSumF)
 		}
 		else
 		{
-			cout << "Ошибка! Файла " << name2F << " не существует";
+			cout << "Ошибка! Файла " << name2F << ".txt не существует" << endl;
 		}
 	}
 	else
 	{
-		cout << "Ошибка! Файла " << name1F << " не существует";
+		cout << "Ошибка! Файла " << name1F << ".txt не существует" << endl;
 	}
 }
